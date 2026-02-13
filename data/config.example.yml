@@ -1,0 +1,51 @@
+# ================= iKuai 配置 =================
+ikuai:
+  url: "http://192.168.10.1"     # iKuai 管理地址
+  user: "admin"                 # iKuai 登录用户名
+  pass: "password"                # iKuai 登录密码
+
+
+# ================= 默认 ACL 行为（兜底） =================
+# 单个服务器未指定接口时，使用这里的默认值
+default_acl:
+  iinterface: "wan1"             # 外网入口接口
+  ointerface: "lan1"             # 内网出口接口
+
+
+# ================= 服务器列表 =================
+# 每一个 server 都是一条独立 ACL 同步源
+servers:
+
+  - name: "OpenWrt-Files"
+    type: "openwrt"
+    comment: "放行OpenWrt-Files"
+    iinterface: "wan1"           # 指定外网入口接口
+    ointerface: "lan1"           # 指定内网出口接口
+    ssh:
+      host: "192.168.10.2"        # 服务器管理地址
+      user: "root"               # SSH 用户名
+      pass: "password"             # SSH 密码
+      
+  - name: "OpenWrt-Rules"
+    type: "openwrt"
+    comment: "放行Opwrt-Rules"
+    iinterface: "wan1"           # 指定外网入口接口
+    ointerface: "lan1"           # 指定内网出口接口
+    ssh:
+      host: "192.168.10.3"        # 服务器管理地址
+      user: "root"               # SSH 用户名
+      pass: "password"             # SSH 密码
+
+#  - name: "FnOS"
+#    type: "fnos"
+#    comment: "放行FnOS-Rules"
+#    iinterface: "wan1"           # 指定外网入口接口
+#    ointerface: "lan1"           # 指定内网出口接口
+#    ssh:
+#    host: "192.168.10.4"        # 服务器管理地址
+#    user: "user"           # SSH 用户名
+#    pass: "password"        # SSH 密码
+
+
+# ================= 同步间隔（秒） =================
+sync_interval: 300
