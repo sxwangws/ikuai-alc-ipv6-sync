@@ -1,4 +1,4 @@
-# ikuai-acl-ipv6-sync
+# iKuai-Acl-IPv6-Sync
 
 Automatically synchronize dynamic IPv6 addresses to iKuai ACL rules.
 
