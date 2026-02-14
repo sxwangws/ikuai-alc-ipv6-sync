@@ -185,57 +185,54 @@ The container outputs logs including:
 
 ---
 
-## 🛠 Development / 开发
+## 🛠 How to quickly deploy Docker / 快速docker部署
+飞牛OS部署（举例）：
+1.在部署的docker文件夹下新建目录，如“ikuai-acl-ipv6-sync”；
+2.在此目录下再建个data目录，把项目中的config.example.yml下载到该目录下；
+3.把config.example.yml改名为config.yml，同时修改配置文件中的信息，保存。
+4.打开飞牛Docker，选Compose，点新增项目，取项目名称自取，路径选上面docker文件夹下新建目录，如“ikuai-acl-ipv6-sync”，来源选创建docker-compose.yml，把下面代码复制进去：
 
-Install dependencies:
+version: '3.8'
 
-```bash
-pip install -r requirements.txt
-```
+services:
+  ikuai-ipv6-sync:
+    image: sxwangws/ikuai-alc-ipv6-sync:latest
+    container_name: ikuai-ipv6-sync
+    restart: always
 
-Run manually:
+    # ===== 运行环境（非业务配置）=====
+    environment:
+      TZ: "Asia/Shanghai"
 
-```bash
-python app/main.py
-```
+    # ===== 配置文件挂载 =====
+    volumes:
+      - ./data:/app/data
 
----
+    # ===== 日志控制 =====
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
 
-## 📦 Docker Image
+    # ===== 健康检查 =====
+    healthcheck:
+      test: ["CMD-SHELL", "ps aux | grep '[m]ain.py' || exit 1"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
 
-Docker Hub:
+    # ===== 网络（可选）=====
+    networks:
+      - ikuai-sync-net
 
-```
-https://hub.docker.com/r/yourdockerhubname/ikuai-acl-ipv6-sync
-```
+networks:
+  ikuai-sync-net:
+    driver: bridge
 
----
-
-## 🗂 Versioning / 版本管理
-
-We use semantic versioning:
-
-- v1.0.0 – Initial stable release
-- Future updates will follow semver
-
-采用语义化版本控制。
-
----
-
-## 📄 License
-
-MIT License
-
-See `LICENSE` file for details.
-
----
-
-## 🤝 Contributing / 贡献
-
-Pull requests are welcome.
-
-欢迎提交 PR。
-
+5.勾选“创建项目后立即启动”，点确认。
+6.注意：相关需要添加的设备需要开启SSH，目前支持openwrt和飞牛，其他还未适配。
 ---
 
 ## ⭐ Support
