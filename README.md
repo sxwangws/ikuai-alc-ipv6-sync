@@ -200,9 +200,9 @@ The container outputs logs including:
 
      version: '3.8'
      services:
-       ikuai-acl-ipv6-sync:
-         image: sxwangws/ikuai-acl-ipv6-sync:latest
-         container_name: ikuai-acl-ipv6-sync
+       ikuai-alc-ipv6-sync:
+         image: sxwangws/ikuai-alc-ipv6-sync:latest
+         container_name: ikuai-alc-ipv6-sync
          restart: always
     
          # ===== 运行环境（非业务配置）=====
@@ -230,9 +230,9 @@ The container outputs logs including:
          # ===== 网络（可选）=====
          networks:
            - ikuai-sync-net
-     networks:
-       ikuai-sync-net:
-         driver: bridge
+ networks:
+   ikuai-sync-net:
+     driver: bridge
 
 
 5.勾选“创建项目后立即启动”，点确认。
