@@ -191,8 +191,7 @@ The container outputs logs including:
 2.在此目录下再建个data目录，把项目中的config.example.yml下载到该目录下；
 3.把config.example.yml改名为config.yml，同时修改配置文件中的信息，保存。
 4.打开飞牛Docker，选Compose，点新增项目，取项目名称自取，路径选上面docker文件夹下新建目录，如“ikuai-acl-ipv6-sync”，来源选创建docker-compose.yml，把下面代码复制进去：
-
-version:'3.8'
+version: '3.8'
 
 services:
   ikuai-acl-ipv6-sync:
@@ -230,7 +229,6 @@ services:
 networks:
   ikuai-sync-net:
     driver: bridge
-
 5.勾选“创建项目后立即启动”，点确认。
 6.注意：相关需要添加的设备需要开启SSH，目前支持openwrt和飞牛，其他还未适配。
 ---
