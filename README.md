@@ -229,6 +229,8 @@ services:
 networks:
   ikuai-sync-net:
     driver: bridge
+
+
 5.勾选“创建项目后立即启动”，点确认。
 6.注意：相关需要添加的设备需要开启SSH，目前支持openwrt和飞牛，其他还未适配。
 ---
