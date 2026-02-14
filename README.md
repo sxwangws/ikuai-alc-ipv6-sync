@@ -196,9 +196,9 @@ The container outputs logs including:
 
  services:
    ikuai-acl-ipv6-sync:
-     image: sxwangws/ikuai-acl-ipv6-sync:latest
-     container_name: ikuai-acl-ipv6-sync
-     restart: always
+    image: sxwangws/ikuai-acl-ipv6-sync:latest
+    container_name: ikuai-acl-ipv6-sync
+    restart: always
 
      # ===== 运行环境（非业务配置）=====
      environment:
