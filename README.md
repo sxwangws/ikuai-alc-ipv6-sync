@@ -228,7 +228,7 @@ The container outputs logs including:
            interval: 60s
            timeout: 10s
            retries: 3
-       start_period: 30s
+           start_period: 30s
          # ===== 网络配置 =====
      networks:
          ikuai-sync-net:
