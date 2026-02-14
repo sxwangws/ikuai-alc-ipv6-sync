@@ -230,9 +230,9 @@ The container outputs logs including:
          # ===== 网络（可选）=====
          networks:
            - ikuai-sync-net
- networks:
-   ikuai-sync-net:
-     driver: bridge
+   networks:
+     ikuai-sync-net:
+       driver: bridge
 
 
 5.勾选“创建项目后立即启动”，点确认。
