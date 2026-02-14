@@ -198,41 +198,41 @@ The container outputs logs including:
 4.打开飞牛Docker，选Compose，点新增项目，取项目名称自取，路径选上面docker文件夹下新建目录，如“ikuai-acl-ipv6-sync”，来源选创建docker-compose.yml，把下面代码复制进去：
 
 
- version: '3.8'
- services:
-   ikuai-acl-ipv6-sync:
-     image: sxwangws/ikuai-acl-ipv6-sync:latest
-     container_name: ikuai-acl-ipv6-sync
-     restart: always
+     version: '3.8'
+     services:
+       ikuai-acl-ipv6-sync:
+         image: sxwangws/ikuai-acl-ipv6-sync:latest
+         container_name: ikuai-acl-ipv6-sync
+         restart: always
+    
+         # ===== 运行环境（非业务配置）=====
+         environment:
+           TZ: "Asia/Shanghai"
 
-     # ===== 运行环境（非业务配置）=====
-     environment:
-       TZ: "Asia/Shanghai"
+         # ===== 配置文件挂载 =====
+         volumes:
+           - ./data:/app/data
 
-     # ===== 配置文件挂载 =====
-     volumes:
-       - ./data:/app/data
+         # ===== 日志控制 =====
+         logging:
+           driver: json-file
+           options:
+             max-size: "10m"
+             max-file: "5"
 
-     # ===== 日志控制 =====
-     logging:
-       driver: json-file
-       options:
-         max-size: "10m"
-         max-file: "5"
-
-     # ===== 健康检查 =====
-     healthcheck:
-       test: ["CMD-SHELL", "ps aux | grep '[m]ain.py' || exit 1"]
-       interval: 60s
-       timeout: 10s
-       retries: 3
+         # ===== 健康检查 =====
+         healthcheck:
+           test: ["CMD-SHELL", "ps aux | grep '[m]ain.py' || exit 1"]
+           interval: 60s
+           timeout: 10s
+           retries: 3
        start_period: 30s
-     # ===== 网络（可选）=====
+         # ===== 网络（可选）=====
+         networks:
+           - ikuai-sync-net
      networks:
-       - ikuai-sync-net
- networks:
-   ikuai-sync-net:
-     driver: bridge
+       ikuai-sync-net:
+         driver: bridge
 
 
 5.勾选“创建项目后立即启动”，点确认。
