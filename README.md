@@ -198,7 +198,6 @@ The container outputs logs including:
 4.打开飞牛Docker，选Compose，点新增项目，取项目名称自取，路径选上面docker文件夹下新建目录，如“ikuai-acl-ipv6-sync”，来源选创建docker-compose.yml，把下面代码复制进去：
 
 
-     version: '3.8'
      services:
        ikuai-alc-ipv6-sync:
          image: sxwangws/ikuai-alc-ipv6-sync:latest
