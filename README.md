@@ -222,11 +222,9 @@ The container outputs logs including:
        timeout: 10s
        retries: 3
        start_period: 30s
-
      # ===== 网络（可选）=====
      networks:
        - ikuai-sync-net
-
  networks:
    ikuai-sync-net:
      driver: bridge
