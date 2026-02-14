@@ -204,6 +204,8 @@ The container outputs logs including:
          image: sxwangws/ikuai-alc-ipv6-sync:latest
          container_name: ikuai-alc-ipv6-sync
          restart: always
+         networks:
+           - ikuai-sync-net
     
          # ===== 运行环境（非业务配置）=====
          environment:
@@ -227,12 +229,10 @@ The container outputs logs including:
            timeout: 10s
            retries: 3
        start_period: 30s
-         # ===== 网络（可选）=====
-         networks:
-           - ikuai-sync-net
-   networks:
-     ikuai-sync-net:
-       driver: bridge
+         # ===== 网络配置 =====
+     networks:
+         ikuai-sync-net:
+           driver: bridge
 
 
 5.勾选“创建项目后立即启动”，点确认。
