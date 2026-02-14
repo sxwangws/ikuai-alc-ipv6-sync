@@ -192,12 +192,12 @@ The container outputs logs including:
 3.把config.example.yml改名为config.yml，同时修改配置文件中的信息，保存。
 4.打开飞牛Docker，选Compose，点新增项目，取项目名称自取，路径选上面docker文件夹下新建目录，如“ikuai-acl-ipv6-sync”，来源选创建docker-compose.yml，把下面代码复制进去：
 
-version: '3.8'
+version:'3.8'
 
 services:
-  ikuai-ipv6-sync:
-    image: sxwangws/ikuai-alc-ipv6-sync:latest
-    container_name: ikuai-ipv6-sync
+  ikuai-acl-ipv6-sync:
+    image: sxwangws/ikuai-acl-ipv6-sync:latest
+    container_name: ikuai-acl-ipv6-sync
     restart: always
 
     # ===== 运行环境（非业务配置）=====
